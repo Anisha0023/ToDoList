@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+ <div class="container">
+    <div class="jumbotron">
+        <h4>Welcome {{user.username}} & your profile </h4>
+        <p>E-mail: {{user.email}}</p>
+        <p>Address: {{user.userprofile.address}}</p>
+        <p>Street: {{user.userprofile.street}}</p>
+        <p>City: {{user.userprofile.city}}</p>
+        <p>Zipcode: {{user.userprofile.zipcode}}</p>
+        {% if user.userprofile.img %}
+            <img src="{{ user.userprofile.img.url }}" alt="Profile Picture">
+        {% else %}
+            <img src="{% static 'image/images2.jpg' %}" alt="Default Profile Picture">
+        {% endif %}
+        <a class="btn btn-danger" href="{% url 'update' %}">Update</a>
+
+
+
+    </div>
+ </div>
+
+{% endblock %}
